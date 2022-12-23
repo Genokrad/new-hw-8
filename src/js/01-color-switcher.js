@@ -13,14 +13,14 @@ function onBtnStartClick(event) {
   }, 500);
   btnStart.disabled = true;
   btnStop.disabled = false;
-  btnStart.removeEventListener('click', onBtnStartClick);
+  // btnStart.removeEventListener('click', onBtnStartClick);
 }
 
 function onBtnSstopClick(event) {
   clearInterval(timerId);
   btnStart.disabled = false;
   btnStop.disabled = true;
-  btnStart.addEventListener('click', onBtnStartClick);
+  // btnStart.addEventListener('click', onBtnStartClick);
 }
 
 function getRandomHexColor() {

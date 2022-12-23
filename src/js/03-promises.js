@@ -1,6 +1,7 @@
 const form = document.querySelector('.form');
 
 form.addEventListener('input', createInputObj);
+form.addEventListener('submit', formHandler);
 
 const inputKey = {};
 
@@ -9,7 +10,6 @@ function createInputObj(event) {
   if (name) {
     inputKey[name] = value;
   }
-  form.addEventListener('submit', formHandler);
 }
 
 function createPromise(position, delay) {
@@ -34,15 +34,8 @@ function createPromise(position, delay) {
 
 function formHandler(event) {
   event.preventDefault();
-
   const { amount, delay, step } = inputKey;
   for (let i = 0; i < amount; i++) {
-    if (i === 0) {
-      createPromise(1, Number(delay));
-    } else if (i === 1) {
-      createPromise(2, Number(delay) + Number(step));
-    } else {
-      createPromise(i + 1, Number(delay) + Number(step * i));
-    }
+    createPromise(i + 1, Number(delay) + Number(step) * i);
   }
 }
